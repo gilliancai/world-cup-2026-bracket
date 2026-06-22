@@ -113,6 +113,7 @@
   .slot.win::after{content:"✓"; color:var(--win); font-weight:900; font-size:12px; margin-left:2px}
   .slot.lose .nm{color:#9aa3ad}
   .mtag{position:absolute; top:-1px; left:-1px; background:#22303d; color:#cfe2f2; font-size:8px; font-weight:700; padding:1px 5px; border-bottom-right-radius:6px}
+  .venue{font-size:9px; color:#5b6b7a; background:#f5f2e8; padding:3px 7px; border-top:1px dashed #e0d4af; line-height:1.3; font-weight:600}
 
   .center-final{
     background:linear-gradient(180deg,#fff,#fff5dc); border:2px solid var(--gold-deep);
@@ -235,44 +236,44 @@ const DATA = {
      group stage finishes (Jun 27) and the Round of 32 begins (Jun 28). */
   knockout: {
     r32:[
-      {m:74, a:{lbl:"Winner E",f:"🇩🇪",n:"Germany"}, b:{lbl:"3rd A/B/C/D/F"}},
-      {m:77, a:{lbl:"Winner I"},                      b:{lbl:"3rd C/D/F/G/H"}},
-      {m:73, a:{lbl:"Runner-up A"},                   b:{lbl:"Runner-up B"}},
-      {m:75, a:{lbl:"Winner F"},                      b:{lbl:"Runner-up C"}},
-      {m:83, a:{lbl:"Runner-up K"},                   b:{lbl:"Runner-up L"}},
-      {m:84, a:{lbl:"Winner H"},                      b:{lbl:"Runner-up J"}},
-      {m:81, a:{lbl:"Winner D",f:"🇺🇸",n:"USA"},       b:{lbl:"3rd B/E/F/I/J"}},
-      {m:82, a:{lbl:"Winner G"},                      b:{lbl:"3rd A/E/H/I/J"}},
-      {m:76, a:{lbl:"Winner C"},                      b:{lbl:"Runner-up F"}},
-      {m:78, a:{lbl:"Runner-up E"},                   b:{lbl:"Runner-up I"}},
-      {m:79, a:{lbl:"Winner A",f:"🇲🇽",n:"Mexico"},    b:{lbl:"3rd C/E/F/H/I"}},
-      {m:80, a:{lbl:"Winner L"},                      b:{lbl:"3rd E/H/I/J/K"}},
-      {m:86, a:{lbl:"Winner J",f:"🇦🇷",n:"Argentina"}, b:{lbl:"Runner-up H"}},
-      {m:88, a:{lbl:"Runner-up D"},                   b:{lbl:"Runner-up G"}},
-      {m:85, a:{lbl:"Winner B"},                      b:{lbl:"3rd E/F/G/I/J"}},
-      {m:87, a:{lbl:"Winner K"},                      b:{lbl:"3rd D/E/I/J/L"}}
+      {m:74, a:{lbl:"Winner E",f:"🇩🇪",n:"Germany"}, b:{lbl:"3rd A/B/C/D/F"}, v:"Gillette Stadium, Foxborough", d:"Jun 29"},
+      {m:77, a:{lbl:"Winner I"},                      b:{lbl:"3rd C/D/F/G/H"}, v:"MetLife Stadium, East Rutherford", d:"Jun 30"},
+      {m:73, a:{lbl:"Runner-up A"},                   b:{lbl:"Runner-up B"}, v:"SoFi Stadium, Inglewood", d:"Jun 28"},
+      {m:75, a:{lbl:"Winner F"},                      b:{lbl:"Runner-up C"}, v:"Estadio BBVA, Guadalupe", d:"Jun 29"},
+      {m:83, a:{lbl:"Runner-up K"},                   b:{lbl:"Runner-up L"}, v:"BMO Field, Toronto", d:"Jul 2"},
+      {m:84, a:{lbl:"Winner H"},                      b:{lbl:"Runner-up J"}, v:"SoFi Stadium, Inglewood", d:"Jul 2"},
+      {m:81, a:{lbl:"Winner D",f:"🇺🇸",n:"USA"},       b:{lbl:"3rd B/E/F/I/J"}, v:"Levi's Stadium, Santa Clara", d:"Jul 1"},
+      {m:82, a:{lbl:"Winner G"},                      b:{lbl:"3rd A/E/H/I/J"}, v:"Lumen Field, Seattle", d:"Jul 1"},
+      {m:76, a:{lbl:"Winner C"},                      b:{lbl:"Runner-up F"}, v:"NRG Stadium, Houston", d:"Jun 29"},
+      {m:78, a:{lbl:"Runner-up E"},                   b:{lbl:"Runner-up I"}, v:"AT&T Stadium, Arlington", d:"Jun 30"},
+      {m:79, a:{lbl:"Winner A",f:"🇲🇽",n:"Mexico"},    b:{lbl:"3rd C/E/F/H/I"}, v:"Estadio Azteca, Mexico City", d:"Jun 30"},
+      {m:80, a:{lbl:"Winner L"},                      b:{lbl:"3rd E/H/I/J/K"}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 1"},
+      {m:86, a:{lbl:"Winner J",f:"🇦🇷",n:"Argentina"}, b:{lbl:"Runner-up H"}, v:"Hard Rock Stadium, Miami Gardens", d:"Jul 3"},
+      {m:88, a:{lbl:"Runner-up D"},                   b:{lbl:"Runner-up G"}, v:"AT&T Stadium, Arlington", d:"Jul 3"},
+      {m:85, a:{lbl:"Winner B"},                      b:{lbl:"3rd E/F/G/I/J"}, v:"BC Place, Vancouver", d:"Jul 2"},
+      {m:87, a:{lbl:"Winner K"},                      b:{lbl:"3rd D/E/I/J/L"}, v:"Arrowhead Stadium, Kansas City", d:"Jul 3"}
     ],
     r16:[
-      {m:89,a:{lbl:"Winner M74"},b:{lbl:"Winner M77"}},
-      {m:90,a:{lbl:"Winner M73"},b:{lbl:"Winner M75"}},
-      {m:93,a:{lbl:"Winner M83"},b:{lbl:"Winner M84"}},
-      {m:94,a:{lbl:"Winner M81"},b:{lbl:"Winner M82"}},
-      {m:91,a:{lbl:"Winner M76"},b:{lbl:"Winner M78"}},
-      {m:92,a:{lbl:"Winner M79"},b:{lbl:"Winner M80"}},
-      {m:95,a:{lbl:"Winner M86"},b:{lbl:"Winner M88"}},
-      {m:96,a:{lbl:"Winner M85"},b:{lbl:"Winner M87"}}
+      {m:89,a:{lbl:"Winner M74"},b:{lbl:"Winner M77"}, v:"Lincoln Financial Field, Philadelphia", d:"Jul 4"},
+      {m:90,a:{lbl:"Winner M73"},b:{lbl:"Winner M75"}, v:"NRG Stadium, Houston", d:"Jul 4"},
+      {m:93,a:{lbl:"Winner M83"},b:{lbl:"Winner M84"}, v:"AT&T Stadium, Arlington", d:"Jul 6"},
+      {m:94,a:{lbl:"Winner M81"},b:{lbl:"Winner M82"}, v:"Lumen Field, Seattle", d:"Jul 6"},
+      {m:91,a:{lbl:"Winner M76"},b:{lbl:"Winner M78"}, v:"MetLife Stadium, East Rutherford", d:"Jul 5"},
+      {m:92,a:{lbl:"Winner M79"},b:{lbl:"Winner M80"}, v:"Estadio Azteca, Mexico City", d:"Jul 5"},
+      {m:95,a:{lbl:"Winner M86"},b:{lbl:"Winner M88"}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 7"},
+      {m:96,a:{lbl:"Winner M85"},b:{lbl:"Winner M87"}, v:"BC Place, Vancouver", d:"Jul 7"}
     ],
     qf:[
-      {m:97,a:{lbl:"Winner M89"},b:{lbl:"Winner M90"}},
-      {m:98,a:{lbl:"Winner M93"},b:{lbl:"Winner M94"}},
-      {m:99,a:{lbl:"Winner M91"},b:{lbl:"Winner M92"}},
-      {m:100,a:{lbl:"Winner M95"},b:{lbl:"Winner M96"}}
+      {m:97,a:{lbl:"Winner M89"},b:{lbl:"Winner M90"}, v:"Gillette Stadium, Foxborough", d:"Jul 9"},
+      {m:98,a:{lbl:"Winner M93"},b:{lbl:"Winner M94"}, v:"SoFi Stadium, Inglewood", d:"Jul 10"},
+      {m:99,a:{lbl:"Winner M91"},b:{lbl:"Winner M92"}, v:"Hard Rock Stadium, Miami Gardens", d:"Jul 11"},
+      {m:100,a:{lbl:"Winner M95"},b:{lbl:"Winner M96"}, v:"Arrowhead Stadium, Kansas City", d:"Jul 11"}
     ],
     sf:[
-      {m:101,a:{lbl:"Winner M97"},b:{lbl:"Winner M98"}},
-      {m:102,a:{lbl:"Winner M99"},b:{lbl:"Winner M100"}}
+      {m:101,a:{lbl:"Winner M97"},b:{lbl:"Winner M98"}, v:"AT&T Stadium, Arlington", d:"Jul 14"},
+      {m:102,a:{lbl:"Winner M99"},b:{lbl:"Winner M100"}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 15"}
     ],
-    final:{m:104,a:{lbl:"Winner SF1"},b:{lbl:"Winner SF2"}}
+    final:{m:104,a:{lbl:"Winner SF1"},b:{lbl:"Winner SF2"}, v:"MetLife Stadium, East Rutherford", d:"Jul 19"}
   },
 
   news:[
@@ -317,7 +318,8 @@ function slot(s){
 }
 function matchEl(mt){
   const d=el('div','match');
-  d.innerHTML=`<span class="mtag">M${mt.m}</span>${slot(mt.a)}${slot(mt.b)}`;
+  const v = mt.v ? `<div class="venue">🏟️ ${mt.v}${mt.d?` · 🗓️ ${mt.d}`:''}</div>` : '';
+  d.innerHTML=`<span class="mtag">M${mt.m}</span>${slot(mt.a)}${slot(mt.b)}${v}`;
   return d;
 }
 function colEl(title, matches){
@@ -345,7 +347,7 @@ function renderBracket(){
   box.innerHTML=`<div class="trophy">🏆</div>
     <div class="final-h">Final</div>
     <div class="match final-match">${slot(k.final.a)}<div class="vs-pill">VS</div>${slot(k.final.b)}</div>
-    <div class="champ-line">🥇 Jul 19 · MetLife Stadium</div>`;
+    <div class="champ-line">🏟️ ${k.final.v||'MetLife Stadium'} · 🗓️ ${k.final.d||'Jul 19'}</div>`;
   center.appendChild(box);
   host.appendChild(center);
 

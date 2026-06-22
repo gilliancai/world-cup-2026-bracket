@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Soccer World Championship — Live Bracket</title>
+<style>
+  :root{
+    --gold:#f4c34a; --gold-deep:#d99b1f; --red:#c01818; --red-deep:#7e0d0d;
+    --ink:#0c1622; --line:#e6c87a; --vs:#1f5fd0; --win:#1f9d57; --out:#9aa3ad;
+    --card:#ffffff; --pitch1:#1f6e34; --pitch2:#16562a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Trebuchet MS","Segoe UI",system-ui,Arial,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 380px at 50% -40px, rgba(255,240,200,.55), transparent 60%),
+      linear-gradient(180deg,#0a1c2c 0%, #102a3c 16%, #1b4a2c 42%, var(--pitch1) 60%, var(--pitch2) 100%);
+    min-height:100vh; padding:18px 14px 60px;
+  }
+  /* faint stadium light streaks + pitch stripes */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 60px, transparent 60px 120px),
+      radial-gradient(600px 200px at 12% 8%, rgba(255,255,210,.18), transparent 70%),
+      radial-gradient(600px 200px at 88% 8%, rgba(255,255,210,.18), transparent 70%);
+  }
+  .wrap{position:relative; z-index:1; max-width:1500px; margin:0 auto}
+
+  header.title{text-align:center; margin-bottom:6px}
+  header.title h1{
+    font-size:clamp(26px,4.4vw,54px); letter-spacing:1px; margin:0;
+    color:#fff; -webkit-text-stroke:1px var(--red-deep);
+    text-shadow:0 2px 0 var(--red-deep), 0 4px 14px rgba(0,0,0,.5);
+    font-weight:900; text-transform:uppercase;
+  }
+  header.title .sub{
+    display:inline-flex; gap:14px; align-items:center; margin-top:4px;
+    color:#ffe9b0; font-weight:700; font-size:13px; letter-spacing:.5px;
+  }
+  .badge-host{background:rgba(0,0,0,.35); border:1px solid var(--line); border-radius:999px; padding:3px 12px}
+  .updated{color:#cfe9ff; font-weight:600}
+
+  /* ===== layout ===== */
+  .stage{display:grid; grid-template-columns:1fr; gap:18px}
+
+  .section-label{
+    text-align:center; color:#ffe9b0; font-weight:800; letter-spacing:2px;
+    text-transform:uppercase; font-size:13px; margin:14px 0 8px;
+    text-shadow:0 1px 4px rgba(0,0,0,.6);
+  }
+
+  /* ===== group cards ===== */
+  .groups{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    gap:12px;
+  }
+  .grp{
+    background:linear-gradient(180deg, rgba(12,22,34,.92), rgba(12,22,34,.82));
+    border:1px solid rgba(244,195,74,.4); border-radius:12px; overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.35);
+  }
+  .grp h3{
+    margin:0; padding:7px 10px; font-size:14px; color:var(--ink);
+    background:linear-gradient(180deg,var(--gold),var(--gold-deep));
+    display:flex; justify-content:space-between; align-items:center; font-weight:900;
+  }
+  .grp h3 small{font-weight:700; color:#5a3b00; font-size:10px; letter-spacing:.4px}
+  table{width:100%; border-collapse:collapse; font-size:13px; color:#eaf1f8}
+  thead th{font-size:9.5px; color:#9fc1de; text-transform:uppercase; letter-spacing:.5px; padding:4px 6px; text-align:center; font-weight:700}
+  thead th.tm{text-align:left}
+  tbody td{padding:5px 6px; text-align:center; border-top:1px solid rgba(255,255,255,.06)}
+  tbody td.tm{text-align:left; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:120px}
+  .flag{font-size:15px; margin-right:5px}
+  tr.q td{background:rgba(31,157,87,.16)}
+  tr.q td.tm{border-left:3px solid var(--win)}
+  tr.elim td{color:var(--out); text-decoration:line-through; text-decoration-color:rgba(192,24,24,.7)}
+  td.pts{font-weight:900; color:#fff}
+  .tag{font-size:8.5px; font-weight:800; padding:1px 5px; border-radius:6px; margin-left:4px; vertical-align:middle}
+  .tag.adv{background:var(--win); color:#fff}
+  .tag.out{background:#7e0d0d; color:#fff; text-decoration:none; display:inline-block}
+
+  /* ===== bracket ===== */
+  .bracket-scroll{overflow-x:auto; padding-bottom:10px}
+  .bracket{
+    display:flex; gap:10px; align-items:stretch; min-width:1240px;
+    justify-content:center;
+  }
+  .col{display:flex; flex-direction:column; justify-content:space-around; gap:8px; flex:1; min-width:150px}
+  .col.center{flex:0 0 200px; justify-content:center; align-items:center; gap:14px}
+  .round-h{
+    text-align:center; font-size:11px; font-weight:800; letter-spacing:1px;
+    color:#0c1622; background:linear-gradient(180deg,var(--gold),var(--gold-deep));
+    border-radius:6px; padding:3px 0; margin-bottom:4px; text-transform:uppercase;
+  }
+  .match{
+    background:var(--card); border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,.4);
+    border:1px solid #d9c49a; overflow:hidden; position:relative;
+  }
+  .slot{
+    display:flex; align-items:center; gap:6px; padding:5px 7px; font-size:12px;
+    border-bottom:1px solid #eee; min-height:26px;
+  }
+  .slot:last-child{border-bottom:none}
+  .slot .nm{flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:600; color:#23303d}
+  .slot .nm.tbd{color:#9aa3ad; font-weight:500; font-style:italic; font-size:11px}
+  .slot .sc{font-weight:900; color:#0c1622; min-width:16px; text-align:center}
+  .slot.win{background:linear-gradient(90deg, rgba(31,157,87,.16), transparent)}
+  .slot.win .nm{color:#0c1622}
+  .slot.win::after{content:"✓"; color:var(--win); font-weight:900; font-size:12px; margin-left:2px}
+  .slot.lose .nm{color:#9aa3ad}
+  .mtag{position:absolute; top:-1px; left:-1px; background:#22303d; color:#cfe2f2; font-size:8px; font-weight:700; padding:1px 5px; border-bottom-right-radius:6px}
+
+  .center-final{
+    background:linear-gradient(180deg,#fff,#fff5dc); border:2px solid var(--gold-deep);
+    border-radius:12px; padding:10px; width:100%; box-shadow:0 8px 26px rgba(0,0,0,.5); text-align:center;
+  }
+  .trophy{font-size:46px; line-height:1; filter:drop-shadow(0 4px 8px rgba(0,0,0,.4))}
+  .final-h{font-weight:900; color:var(--red); letter-spacing:2px; font-size:15px; text-transform:uppercase; margin:4px 0 8px}
+  .final-match .slot{font-size:13px; border-color:#eedca0}
+  .vs-pill{display:inline-block; background:var(--vs); color:#fff; font-weight:900; font-size:11px; padding:2px 9px; border-radius:999px; margin:6px 0}
+  .champ-line{margin-top:8px; font-size:11px; color:#7a5a00; font-weight:700}
+
+  /* news box */
+  .news{
+    background:#fffdf5; border:1px solid #e3d29a; border-radius:12px; padding:12px 14px;
+    box-shadow:0 6px 18px rgba(0,0,0,.3); max-width:760px; margin:8px auto 0;
+  }
+  .news h4{margin:0 0 8px; color:var(--red); letter-spacing:1px; text-transform:uppercase; font-size:13px; display:flex; align-items:center; gap:8px}
+  .news ul{margin:0; padding-left:18px; color:#33414f; font-size:13px; line-height:1.55}
+  footer{text-align:center; color:#bcd4e6; font-size:11px; margin-top:22px; line-height:1.6}
+  footer code{background:rgba(0,0,0,.35); padding:1px 6px; border-radius:5px; color:#ffe9b0}
+  @media(max-width:560px){ .groups{grid-template-columns:1fr 1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="title">
+    <h1>2026 Soccer World Championship</h1>
+    <div class="sub">
+      <span class="badge-host">🇨🇦 Canada · 🇲🇽 Mexico · 🇺🇸 USA</span>
+      <span class="updated" id="updated">Updated —</span>
+    </div>
+  </header>
+
+  <div class="stage">
+    <div>
+      <div class="section-label">Group Stage · 12 Groups · Live Standings</div>
+      <div class="groups" id="groups"></div>
+    </div>
+
+    <div>
+      <div class="section-label">Knockout Bracket · Round of 32 → Final</div>
+      <div class="bracket-scroll">
+        <div class="bracket" id="bracket"></div>
+      </div>
+    </div>
+
+    <div class="news">
+      <h4>📰 Latest News</h4>
+      <ul id="news"></ul>
+    </div>
+  </div>
+
+  <footer>
+    Auto-updates daily during the tournament. Data fields live in the <code>DATA</code> object at the top of this file.<br>
+    Group stage Jun 11–27 · Round of 32 starts Jun 28 · Final Jul 19 at MetLife Stadium, New Jersey.
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   EDIT THIS DATA OBJECT TO UPDATE THE BRACKET.
+   Each day: add scores to group rows + fill knockout slots.
+   status: "q" = qualified/advanced, "out" = eliminated, "" = in contention
+   ============================================================ */
+const DATA = {
+  updated: "22 June 2026",
+  groups: {
+    A:[ {f:"🇲🇽",n:"Mexico",pld:2,gd:"+3",pts:6,status:"q"},
+        {f:"🇰🇷",n:"South Korea",pld:2,gd:"0",pts:3,status:""},
+        {f:"🇨🇿",n:"Czechia",pld:2,gd:"-1",pts:1,status:""},
+        {f:"🇿🇦",n:"South Africa",pld:2,gd:"-2",pts:1,status:""} ],
+    B:[ {f:"🇨🇦",n:"Canada",pld:2,gd:"+6",pts:4,status:""},
+        {f:"🇨🇭",n:"Switzerland",pld:2,gd:"+3",pts:4,status:""},
+        {f:"🇧🇦",n:"Bosnia & Herz.",pld:2,gd:"-3",pts:1,status:""},
+        {f:"🇶🇦",n:"Qatar",pld:2,gd:"-6",pts:1,status:""} ],
+    C:[ {f:"🇧🇷",n:"Brazil",pld:2,gd:"+3",pts:4,status:""},
+        {f:"🇲🇦",n:"Morocco",pld:2,gd:"+1",pts:4,status:""},
+        {f:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",n:"Scotland",pld:2,gd:"0",pts:3,status:""},
+        {f:"🇭🇹",n:"Haiti",pld:2,gd:"-4",pts:0,status:"out"} ],
+    D:[ {f:"🇺🇸",n:"USA",pld:2,gd:"+5",pts:6,status:"q"},
+        {f:"🇦🇺",n:"Australia",pld:2,gd:"0",pts:3,status:""},
+        {f:"🇵🇾",n:"Paraguay",pld:2,gd:"-2",pts:3,status:""},
+        {f:"🇹🇷",n:"Türkiye",pld:2,gd:"-3",pts:0,status:"out"} ],
+    E:[ {f:"🇩🇪",n:"Germany",pld:2,gd:"+7",pts:6,status:"q"},
+        {f:"🇨🇮",n:"Ivory Coast",pld:2,gd:"0",pts:3,status:""},
+        {f:"🇪🇨",n:"Ecuador",pld:2,gd:"-1",pts:1,status:""},
+        {f:"🇨🇼",n:"Curaçao",pld:2,gd:"-6",pts:1,status:""} ],
+    F:[ {f:"🇳🇱",n:"Netherlands",pld:2,gd:"+4",pts:4,status:""},
+        {f:"🇯🇵",n:"Japan",pld:2,gd:"+4",pts:4,status:""},
+        {f:"🇸🇪",n:"Sweden",pld:2,gd:"0",pts:3,status:""},
+        {f:"🇹🇳",n:"Tunisia",pld:2,gd:"-8",pts:0,status:"out"} ],
+    G:[ {f:"🇪🇬",n:"Egypt",pld:2,gd:"+2",pts:4,status:""},
+        {f:"🇮🇷",n:"Iran",pld:2,gd:"0",pts:2,status:""},
+        {f:"🇧🇪",n:"Belgium",pld:2,gd:"0",pts:2,status:""},
+        {f:"🇳🇿",n:"New Zealand",pld:2,gd:"-2",pts:1,status:""} ],
+    H:[ {f:"🇪🇸",n:"Spain",pld:2,gd:"+4",pts:4,status:""},
+        {f:"🇺🇾",n:"Uruguay",pld:2,gd:"0",pts:2,status:""},
+        {f:"🇨🇻",n:"Cape Verde",pld:2,gd:"0",pts:2,status:""},
+        {f:"🇸🇦",n:"Saudi Arabia",pld:2,gd:"-4",pts:1,status:""} ],
+    I:[ {f:"🇳🇴",n:"Norway",pld:1,gd:"+3",pts:3,status:""},
+        {f:"🇫🇷",n:"France",pld:1,gd:"+2",pts:3,status:""},
+        {f:"🇸🇳",n:"Senegal",pld:1,gd:"-2",pts:0,status:""},
+        {f:"🇮🇶",n:"Iraq",pld:1,gd:"-3",pts:0,status:""} ],
+    J:[ {f:"🇦🇷",n:"Argentina",pld:2,gd:"+5",pts:6,status:"q"},
+        {f:"🇦🇹",n:"Austria",pld:2,gd:"+1",pts:3,status:""},
+        {f:"🇯🇴",n:"Jordan",pld:2,gd:"-2",pts:0,status:""},
+        {f:"🇩🇿",n:"Algeria",pld:2,gd:"-3",pts:0,status:""} ],
+    K:[ {f:"🇨🇴",n:"Colombia",pld:1,gd:"+2",pts:3,status:""},
+        {f:"🇨🇩",n:"DR Congo",pld:1,gd:"0",pts:1,status:""},
+        {f:"🇵🇹",n:"Portugal",pld:1,gd:"0",pts:1,status:""},
+        {f:"🇺🇿",n:"Uzbekistan",pld:1,gd:"-2",pts:0,status:""} ],
+    L:[ {f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England",pld:1,gd:"+2",pts:3,status:""},
+        {f:"🇬🇭",n:"Ghana",pld:1,gd:"+1",pts:3,status:""},
+        {f:"🇵🇦",n:"Panama",pld:1,gd:"-1",pts:0,status:""},
+        {f:"🇭🇷",n:"Croatia",pld:1,gd:"-2",pts:0,status:""} ]
+  },
+
+  /* Knockout: each slot = {lbl: seed source, f/n: filled team, sc: score, win:true}
+     Group winners that have clinched are pre-filled; opponents resolve as the
+     group stage finishes (Jun 27) and the Round of 32 begins (Jun 28). */
+  knockout: {
+    r32:[
+      {m:74, a:{lbl:"Winner E",f:"🇩🇪",n:"Germany"}, b:{lbl:"3rd A/B/C/D/F"}},
+      {m:77, a:{lbl:"Winner I"},                      b:{lbl:"3rd C/D/F/G/H"}},
+      {m:73, a:{lbl:"Runner-up A"},                   b:{lbl:"Runner-up B"}},
+      {m:75, a:{lbl:"Winner F"},                      b:{lbl:"Runner-up C"}},
+      {m:83, a:{lbl:"Runner-up K"},                   b:{lbl:"Runner-up L"}},
+      {m:84, a:{lbl:"Winner H"},                      b:{lbl:"Runner-up J"}},
+      {m:81, a:{lbl:"Winner D",f:"🇺🇸",n:"USA"},       b:{lbl:"3rd B/E/F/I/J"}},
+      {m:82, a:{lbl:"Winner G"},                      b:{lbl:"3rd A/E/H/I/J"}},
+      {m:76, a:{lbl:"Winner C"},                      b:{lbl:"Runner-up F"}},
+      {m:78, a:{lbl:"Runner-up E"},                   b:{lbl:"Runner-up I"}},
+      {m:79, a:{lbl:"Winner A",f:"🇲🇽",n:"Mexico"},    b:{lbl:"3rd C/E/F/H/I"}},
+      {m:80, a:{lbl:"Winner L"},                      b:{lbl:"3rd E/H/I/J/K"}},
+      {m:86, a:{lbl:"Winner J",f:"🇦🇷",n:"Argentina"}, b:{lbl:"Runner-up H"}},
+      {m:88, a:{lbl:"Runner-up D"},                   b:{lbl:"Runner-up G"}},
+      {m:85, a:{lbl:"Winner B"},                      b:{lbl:"3rd E/F/G/I/J"}},
+      {m:87, a:{lbl:"Winner K"},                      b:{lbl:"3rd D/E/I/J/L"}}
+    ],
+    r16:[
+      {m:89,a:{lbl:"Winner M74"},b:{lbl:"Winner M77"}},
+      {m:90,a:{lbl:"Winner M73"},b:{lbl:"Winner M75"}},
+      {m:93,a:{lbl:"Winner M83"},b:{lbl:"Winner M84"}},
+      {m:94,a:{lbl:"Winner M81"},b:{lbl:"Winner M82"}},
+      {m:91,a:{lbl:"Winner M76"},b:{lbl:"Winner M78"}},
+      {m:92,a:{lbl:"Winner M79"},b:{lbl:"Winner M80"}},
+      {m:95,a:{lbl:"Winner M86"},b:{lbl:"Winner M88"}},
+      {m:96,a:{lbl:"Winner M85"},b:{lbl:"Winner M87"}}
+    ],
+    qf:[
+      {m:97,a:{lbl:"Winner M89"},b:{lbl:"Winner M90"}},
+      {m:98,a:{lbl:"Winner M93"},b:{lbl:"Winner M94"}},
+      {m:99,a:{lbl:"Winner M91"},b:{lbl:"Winner M92"}},
+      {m:100,a:{lbl:"Winner M95"},b:{lbl:"Winner M96"}}
+    ],
+    sf:[
+      {m:101,a:{lbl:"Winner M97"},b:{lbl:"Winner M98"}},
+      {m:102,a:{lbl:"Winner M99"},b:{lbl:"Winner M100"}}
+    ],
+    final:{m:104,a:{lbl:"Winner SF1"},b:{lbl:"Winner SF2"}}
+  },
+
+  news:[
+    "Group stage in full swing — Mexico, USA, Germany and Argentina have already booked Round of 32 spots.",
+    "Biggest wins so far: Germany 7–1 Curaçao and Canada 6–0 Qatar.",
+    "Haiti, Türkiye and Tunisia are the first nations eliminated.",
+    "Round of 32 kicks off 28 June; the bracket below fills in automatically as groups finish."
+  ]
+};
+
+/* ===================== RENDERING ===================== */
+function el(t,c,h){const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;}
+
+function renderGroups(){
+  const host=document.getElementById('groups');
+  for(const [g,teams] of Object.entries(DATA.groups)){
+    const card=el('div','grp');
+    card.appendChild(el('h3',null,`Group ${g}<small>P · GD · Pts</small>`));
+    const tbl=el('table');
+    tbl.innerHTML=`<thead><tr><th class="tm">Team</th><th>P</th><th>GD</th><th>Pts</th></tr></thead>`;
+    const tb=el('tbody');
+    teams.forEach(t=>{
+      const tr=el('tr', t.status==='q'?'q':(t.status==='out'?'elim':''));
+      let tag = t.status==='q' ? '<span class="tag adv">ADV</span>' :
+                t.status==='out' ? '<span class="tag out">OUT</span>' : '';
+      tr.innerHTML=`<td class="tm"><span class="flag">${t.f}</span>${t.n}${tag}</td>
+        <td>${t.pld}</td><td>${t.gd}</td><td class="pts">${t.pts}</td>`;
+      tb.appendChild(tr);
+    });
+    tbl.appendChild(tb); card.appendChild(tbl); host.appendChild(card);
+  }
+}
+
+function slot(s){
+  const filled = s && s.n;
+  const cls = 'slot' + (s.win?' win':'') + (s.lose?' lose':'');
+  const name = filled ? `<span class="flag">${s.f||''}</span>${s.n}`
+                      : `<span class="nm tbd">${s?s.lbl:'TBD'}</span>`;
+  const inner = filled ? `<span class="nm">${name}</span>` : name;
+  const sc = (s && s.sc!=null) ? `<span class="sc">${s.sc}</span>` : '';
+  return `<div class="${cls}">${inner}${sc}</div>`;
+}
+function matchEl(mt){
+  const d=el('div','match');
+  d.innerHTML=`<span class="mtag">M${mt.m}</span>${slot(mt.a)}${slot(mt.b)}`;
+  return d;
+}
+function colEl(title, matches){
+  const c=el('div','col');
+  c.appendChild(el('div','round-h',title));
+  matches.forEach(m=>c.appendChild(matchEl(m)));
+  return c;
+}
+
+function renderBracket(){
+  const host=document.getElementById('bracket');
+  const k=DATA.knockout;
+  // left half = first 8 R32, first 4 R16, first 2 QF, SF1
+  const L={r32:k.r32.slice(0,8), r16:k.r16.slice(0,4), qf:k.qf.slice(0,2), sf:[k.sf[0]]};
+  const R={r32:k.r32.slice(8),   r16:k.r16.slice(4),   qf:k.qf.slice(2),   sf:[k.sf[1]]};
+
+  host.appendChild(colEl('Round of 32', L.r32));
+  host.appendChild(colEl('Round of 16', L.r16));
+  host.appendChild(colEl('Quarter-finals', L.qf));
+  host.appendChild(colEl('Semi-final', L.sf));
+
+  // center: final + trophy
+  const center=el('div','col center');
+  const box=el('div','center-final');
+  box.innerHTML=`<div class="trophy">🏆</div>
+    <div class="final-h">Final</div>
+    <div class="match final-match">${slot(k.final.a)}<div class="vs-pill">VS</div>${slot(k.final.b)}</div>
+    <div class="champ-line">🥇 Jul 19 · MetLife Stadium</div>`;
+  center.appendChild(box);
+  host.appendChild(center);
+
+  host.appendChild(colEl('Semi-final', R.sf));
+  host.appendChild(colEl('Quarter-finals', R.qf));
+  host.appendChild(colEl('Round of 16', R.r16));
+  host.appendChild(colEl('Round of 32', R.r32));
+}
+
+function renderNews(){
+  document.getElementById('updated').textContent='Updated '+DATA.updated;
+  const ul=document.getElementById('news');
+  DATA.news.forEach(n=>ul.appendChild(el('li',null,n)));
+}
+
+renderGroups(); renderBracket(); renderNews();
+</script>
+</body>
+</html>

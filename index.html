@@ -185,7 +185,7 @@
    status: "q" = qualified/advanced, "out" = eliminated, "" = in contention
    ============================================================ */
 const DATA = {
-  updated: "28 June 2026",
+  updated: "29 June 2026",
   groups: {
     A:[ {f:"🇲🇽",n:"Mexico",pld:3,gd:"+6",pts:9,status:"q"},
         {f:"🇿🇦",n:"South Africa",pld:3,gd:"-1",pts:4,status:"q"},
@@ -242,7 +242,7 @@ const DATA = {
      group stage finishes (Jun 27) and the Round of 32 begins (Jun 28). */
   knockout: {
     r32:[
-      {m:74, a:{lbl:"Winner E",f:"🇩🇪",n:"Germany"}, b:{lbl:"3rd D",f:"🇵🇾",n:"Paraguay"}, v:"Gillette Stadium, Foxborough", d:"Jun 29"},
+      {m:74, a:{lbl:"Winner E",f:"🇩🇪",n:"Germany",sc:"1",lose:true}, b:{lbl:"3rd D",f:"🇵🇾",n:"Paraguay",sc:"1 (p)",win:true}, v:"Gillette Stadium, Foxborough", d:"Jun 29"},
       {m:77, a:{lbl:"Winner I",f:"🇫🇷",n:"France"},     b:{lbl:"3rd F",f:"🇸🇪",n:"Sweden"}, v:"MetLife Stadium, East Rutherford", d:"Jun 30"},
       {m:73, a:{lbl:"Runner-up A",f:"🇿🇦",n:"South Africa",sc:0,lose:true}, b:{lbl:"Runner-up B",f:"🇨🇦",n:"Canada",sc:1,win:true}, v:"SoFi Stadium, Inglewood", d:"Jun 28"},
       {m:75, a:{lbl:"Winner F",f:"🇳🇱",n:"Netherlands"}, b:{lbl:"Runner-up C",f:"🇲🇦",n:"Morocco"}, v:"Estadio BBVA, Guadalupe", d:"Jun 29"},
@@ -250,7 +250,7 @@ const DATA = {
       {m:84, a:{lbl:"Winner H",f:"🇪🇸",n:"Spain"},      b:{lbl:"Runner-up J",f:"🇦🇹",n:"Austria"}, v:"SoFi Stadium, Inglewood", d:"Jul 2"},
       {m:81, a:{lbl:"Winner D",f:"🇺🇸",n:"USA"},       b:{lbl:"3rd B",f:"🇧🇦",n:"Bosnia & Herz."}, v:"Levi's Stadium, Santa Clara", d:"Jul 1"},
       {m:82, a:{lbl:"Winner G",f:"🇧🇪",n:"Belgium"},   b:{lbl:"3rd I",f:"🇸🇳",n:"Senegal"}, v:"Lumen Field, Seattle", d:"Jul 1"},
-      {m:76, a:{lbl:"Winner C",f:"🇧🇷",n:"Brazil"},     b:{lbl:"Runner-up F",f:"🇯🇵",n:"Japan"}, v:"NRG Stadium, Houston", d:"Jun 29"},
+      {m:76, a:{lbl:"Winner C",f:"🇧🇷",n:"Brazil",sc:2,win:true},     b:{lbl:"Runner-up F",f:"🇯🇵",n:"Japan",sc:1,lose:true}, v:"NRG Stadium, Houston", d:"Jun 29"},
       {m:78, a:{lbl:"Runner-up E",f:"🇨🇮",n:"Ivory Coast"}, b:{lbl:"Runner-up I",f:"🇳🇴",n:"Norway"}, v:"AT&T Stadium, Arlington", d:"Jun 30"},
       {m:79, a:{lbl:"Winner A",f:"🇲🇽",n:"Mexico"},    b:{lbl:"3rd E",f:"🇪🇨",n:"Ecuador"}, v:"Estadio Azteca, Mexico City", d:"Jun 30"},
       {m:80, a:{lbl:"Winner L",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"}, b:{lbl:"3rd K",f:"🇨🇩",n:"DR Congo"}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 1"},
@@ -260,11 +260,11 @@ const DATA = {
       {m:87, a:{lbl:"Winner K",f:"🇨🇴",n:"Colombia"},  b:{lbl:"3rd L",f:"🇬🇭",n:"Ghana"}, v:"Arrowhead Stadium, Kansas City", d:"Jul 3"}
     ],
     r16:[
-      {m:89,a:{lbl:"Winner M74"},b:{lbl:"Winner M77"}, v:"Lincoln Financial Field, Philadelphia", d:"Jul 4"},
+      {m:89,a:{lbl:"Winner M74",f:"🇵🇾",n:"Paraguay"},b:{lbl:"Winner M77"}, v:"Lincoln Financial Field, Philadelphia", d:"Jul 4"},
       {m:90,a:{lbl:"Winner M73",f:"🇨🇦",n:"Canada"},b:{lbl:"Winner M75"}, v:"NRG Stadium, Houston", d:"Jul 4"},
       {m:93,a:{lbl:"Winner M83"},b:{lbl:"Winner M84"}, v:"AT&T Stadium, Arlington", d:"Jul 6"},
       {m:94,a:{lbl:"Winner M81"},b:{lbl:"Winner M82"}, v:"Lumen Field, Seattle", d:"Jul 6"},
-      {m:91,a:{lbl:"Winner M76"},b:{lbl:"Winner M78"}, v:"MetLife Stadium, East Rutherford", d:"Jul 5"},
+      {m:91,a:{lbl:"Winner M76",f:"🇧🇷",n:"Brazil"},b:{lbl:"Winner M78"}, v:"MetLife Stadium, East Rutherford", d:"Jul 5"},
       {m:92,a:{lbl:"Winner M79"},b:{lbl:"Winner M80"}, v:"Estadio Azteca, Mexico City", d:"Jul 5"},
       {m:95,a:{lbl:"Winner M86"},b:{lbl:"Winner M88"}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 7"},
       {m:96,a:{lbl:"Winner M85"},b:{lbl:"Winner M87"}, v:"BC Place, Vancouver", d:"Jul 7"}
@@ -283,10 +283,10 @@ const DATA = {
   },
 
   news:[
-    "All 12 groups are decided — the full Round of 32 is set and knockout play begins today, 28 June.",
-    "Canada win the knockout opener 1–0 over South Africa at SoFi Stadium and advance to the Round of 16.",
-    "Eight best third-placed teams advanced, including Senegal, Bosnia & Herzegovina and DR Congo on tight margins.",
-    "Heavyweight ties loom: Germany–Paraguay and Netherlands–Morocco on 29 June, France–Sweden on 30 June, Brazil–Japan in Houston."
+    "Round of 32 underway — three ties decided on 29 June, with Netherlands–Morocco still to come tonight in Monterrey.",
+    "Paraguay stun Germany, advancing on penalties after a 1–1 draw in Foxborough.",
+    "Brazil edge Japan 2–1 at NRG Stadium — Martinelli with a stoppage-time winner after Casemiro's equaliser.",
+    "Canada remain the early story, through to the Round of 16 after Saturday's 1–0 win over South Africa."
   ]
 };
 

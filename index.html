@@ -185,7 +185,7 @@
    status: "q" = qualified/advanced, "out" = eliminated, "" = in contention
    ============================================================ */
 const DATA = {
-  updated: "30 June 2026",
+  updated: "1 July 2026",
   groups: {
     A:[ {f:"🇲🇽",n:"Mexico",pld:3,gd:"+6",pts:9,status:"q"},
         {f:"🇿🇦",n:"South Africa",pld:3,gd:"-1",pts:4,status:"q"},
@@ -248,12 +248,12 @@ const DATA = {
       {m:75, a:{lbl:"Winner F",f:"🇳🇱",n:"Netherlands",sc:1,lose:true}, b:{lbl:"Runner-up C",f:"🇲🇦",n:"Morocco",sc:"1 (p)",win:true}, v:"Estadio BBVA, Guadalupe", d:"Jun 29"},
       {m:83, a:{lbl:"Runner-up K",f:"🇵🇹",n:"Portugal"}, b:{lbl:"Runner-up L",f:"🇭🇷",n:"Croatia"}, v:"BMO Field, Toronto", d:"Jul 2"},
       {m:84, a:{lbl:"Winner H",f:"🇪🇸",n:"Spain"},      b:{lbl:"Runner-up J",f:"🇦🇹",n:"Austria"}, v:"SoFi Stadium, Inglewood", d:"Jul 2"},
-      {m:81, a:{lbl:"Winner D",f:"🇺🇸",n:"USA"},       b:{lbl:"3rd B",f:"🇧🇦",n:"Bosnia & Herz."}, v:"Levi's Stadium, Santa Clara", d:"Jul 1"},
-      {m:82, a:{lbl:"Winner G",f:"🇧🇪",n:"Belgium"},   b:{lbl:"3rd I",f:"🇸🇳",n:"Senegal"}, v:"Lumen Field, Seattle", d:"Jul 1"},
+      {m:81, a:{lbl:"Winner D",f:"🇺🇸",n:"USA",sc:2,win:true},       b:{lbl:"3rd B",f:"🇧🇦",n:"Bosnia & Herz.",sc:1,lose:true}, v:"Levi's Stadium, Santa Clara", d:"Jul 1"},
+      {m:82, a:{lbl:"Winner G",f:"🇧🇪",n:"Belgium",sc:1,lose:true},   b:{lbl:"3rd I",f:"🇸🇳",n:"Senegal",sc:2,win:true}, v:"Lumen Field, Seattle", d:"Jul 1"},
       {m:76, a:{lbl:"Winner C",f:"🇧🇷",n:"Brazil",sc:2,win:true},     b:{lbl:"Runner-up F",f:"🇯🇵",n:"Japan",sc:1,lose:true}, v:"NRG Stadium, Houston", d:"Jun 29"},
       {m:78, a:{lbl:"Runner-up E",f:"🇨🇮",n:"Ivory Coast",sc:1,lose:true}, b:{lbl:"Runner-up I",f:"🇳🇴",n:"Norway",sc:2,win:true}, v:"AT&T Stadium, Arlington", d:"Jun 30"},
       {m:79, a:{lbl:"Winner A",f:"🇲🇽",n:"Mexico",sc:2,win:true},    b:{lbl:"3rd E",f:"🇪🇨",n:"Ecuador",sc:0,lose:true}, v:"Estadio Azteca, Mexico City", d:"Jun 30"},
-      {m:80, a:{lbl:"Winner L",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"}, b:{lbl:"3rd K",f:"🇨🇩",n:"DR Congo"}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 1"},
+      {m:80, a:{lbl:"Winner L",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England",sc:3,win:true}, b:{lbl:"3rd K",f:"🇨🇩",n:"DR Congo",sc:1,lose:true}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 1"},
       {m:86, a:{lbl:"Winner J",f:"🇦🇷",n:"Argentina"}, b:{lbl:"Runner-up H",f:"🇨🇻",n:"Cape Verde"}, v:"Hard Rock Stadium, Miami Gardens", d:"Jul 3"},
       {m:88, a:{lbl:"Runner-up D",f:"🇦🇺",n:"Australia"}, b:{lbl:"Runner-up G",f:"🇪🇬",n:"Egypt"}, v:"AT&T Stadium, Arlington", d:"Jul 3"},
       {m:85, a:{lbl:"Winner B",f:"🇨🇭",n:"Switzerland"}, b:{lbl:"3rd J",f:"🇩🇿",n:"Algeria"}, v:"BC Place, Vancouver", d:"Jul 2"},
@@ -263,9 +263,9 @@ const DATA = {
       {m:89,a:{lbl:"Winner M74",f:"🇵🇾",n:"Paraguay"},b:{lbl:"Winner M77",f:"🇫🇷",n:"France"}, v:"Lincoln Financial Field, Philadelphia", d:"Jul 4"},
       {m:90,a:{lbl:"Winner M73",f:"🇨🇦",n:"Canada"},b:{lbl:"Winner M75",f:"🇲🇦",n:"Morocco"}, v:"NRG Stadium, Houston", d:"Jul 4"},
       {m:93,a:{lbl:"Winner M83"},b:{lbl:"Winner M84"}, v:"AT&T Stadium, Arlington", d:"Jul 6"},
-      {m:94,a:{lbl:"Winner M81"},b:{lbl:"Winner M82"}, v:"Lumen Field, Seattle", d:"Jul 6"},
+      {m:94,a:{lbl:"Winner M81",f:"🇺🇸",n:"USA"},b:{lbl:"Winner M82",f:"🇸🇳",n:"Senegal"}, v:"Lumen Field, Seattle", d:"Jul 6"},
       {m:91,a:{lbl:"Winner M76",f:"🇧🇷",n:"Brazil"},b:{lbl:"Winner M78",f:"🇳🇴",n:"Norway"}, v:"MetLife Stadium, East Rutherford", d:"Jul 5"},
-      {m:92,a:{lbl:"Winner M79",f:"🇲🇽",n:"Mexico"},b:{lbl:"Winner M80"}, v:"Estadio Azteca, Mexico City", d:"Jul 5"},
+      {m:92,a:{lbl:"Winner M79",f:"🇲🇽",n:"Mexico"},b:{lbl:"Winner M80",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"}, v:"Estadio Azteca, Mexico City", d:"Jul 5"},
       {m:95,a:{lbl:"Winner M86"},b:{lbl:"Winner M88"}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 7"},
       {m:96,a:{lbl:"Winner M85"},b:{lbl:"Winner M87"}, v:"BC Place, Vancouver", d:"Jul 7"}
     ],
@@ -283,10 +283,10 @@ const DATA = {
   },
 
   news:[
-    "France demolish Sweden 3–0 at MetLife Stadium — Mbappé bags a brace to equal Messi's World Cup record of 18 goals.",
-    "Norway edge past Ivory Coast 2–1 in Dallas — Haaland's 86th-minute winner sets up a last-16 clash with Brazil.",
-    "Mexico beat Ecuador 2–0 at Estadio Azteca — Quiñones and Jiménez goals send El Tri through to face England/Congo.",
-    "England (vs DR Congo), USA (vs Bosnia & Herz.), Belgium (vs Senegal) all in action today 1 July."
+    "England 3–1 DR Congo in Atlanta — Three Lions cruise into Round of 16 to face Mexico at Estadio Azteca on Jul 5.",
+    "USA 2–1 Bosnia & Herz. at Levi's Stadium — first knockout-round win since 2002; Americans set up USA vs Senegal on Jul 6.",
+    "Senegal upset Belgium 2–1 in Seattle — Teranga Lions eliminate group-stage heavyweights and advance to face the USA.",
+    "Round of 32 concludes Jul 2–3: Spain, Portugal, Switzerland, Argentina, Colombia & Australia still to play."
   ]
 };
 

@@ -248,12 +248,12 @@ const DATA = {
       {m:75, a:{lbl:"Winner F",f:"🇳🇱",n:"Netherlands",sc:1,lose:true}, b:{lbl:"Runner-up C",f:"🇲🇦",n:"Morocco",sc:"1 (p)",win:true}, v:"Estadio BBVA, Guadalupe", d:"Jun 29"},
       {m:83, a:{lbl:"Runner-up K",f:"🇵🇹",n:"Portugal"}, b:{lbl:"Runner-up L",f:"🇭🇷",n:"Croatia"}, v:"BMO Field, Toronto", d:"Jul 2"},
       {m:84, a:{lbl:"Winner H",f:"🇪🇸",n:"Spain"},      b:{lbl:"Runner-up J",f:"🇦🇹",n:"Austria"}, v:"SoFi Stadium, Inglewood", d:"Jul 2"},
-      {m:81, a:{lbl:"Winner D",f:"🇺🇸",n:"USA"},       b:{lbl:"3rd B",f:"🇧🇦",n:"Bosnia & Herz."}, v:"Levi's Stadium, Santa Clara", d:"Jul 1"},
-      {m:82, a:{lbl:"Winner G",f:"🇧🇪",n:"Belgium"},   b:{lbl:"3rd I",f:"🇸🇳",n:"Senegal"}, v:"Lumen Field, Seattle", d:"Jul 1"},
+      {m:81, a:{lbl:"Winner D",f:"🇺🇸",n:"USA",sc:2,win:true},       b:{lbl:"3rd B",f:"🇧🇦",n:"Bosnia & Herz.",sc:0,lose:true}, v:"Levi's Stadium, Santa Clara", d:"Jul 1"},
+      {m:82, a:{lbl:"Winner G",f:"🇧🇪",n:"Belgium",sc:3,win:true},   b:{lbl:"3rd I",f:"🇸🇳",n:"Senegal",sc:2,lose:true}, v:"Lumen Field, Seattle", d:"Jul 1"},
       {m:76, a:{lbl:"Winner C",f:"🇧🇷",n:"Brazil",sc:2,win:true},     b:{lbl:"Runner-up F",f:"🇯🇵",n:"Japan",sc:1,lose:true}, v:"NRG Stadium, Houston", d:"Jun 29"},
       {m:78, a:{lbl:"Runner-up E",f:"🇨🇮",n:"Ivory Coast",sc:1,lose:true}, b:{lbl:"Runner-up I",f:"🇳🇴",n:"Norway",sc:2,win:true}, v:"AT&T Stadium, Arlington", d:"Jun 30"},
       {m:79, a:{lbl:"Winner A",f:"🇲🇽",n:"Mexico",sc:2,win:true},    b:{lbl:"3rd E",f:"🇪🇨",n:"Ecuador",sc:0,lose:true}, v:"Estadio Azteca, Mexico City", d:"Jun 30"},
-      {m:80, a:{lbl:"Winner L",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"}, b:{lbl:"3rd K",f:"🇨🇩",n:"DR Congo"}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 1"},
+      {m:80, a:{lbl:"Winner L",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England",sc:2,win:true}, b:{lbl:"3rd K",f:"🇨🇩",n:"DR Congo",sc:1,lose:true}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 1"},
       {m:86, a:{lbl:"Winner J",f:"🇦🇷",n:"Argentina"}, b:{lbl:"Runner-up H",f:"🇨🇻",n:"Cape Verde"}, v:"Hard Rock Stadium, Miami Gardens", d:"Jul 3"},
       {m:88, a:{lbl:"Runner-up D",f:"🇦🇺",n:"Australia"}, b:{lbl:"Runner-up G",f:"🇪🇬",n:"Egypt"}, v:"AT&T Stadium, Arlington", d:"Jul 3"},
       {m:85, a:{lbl:"Winner B",f:"🇨🇭",n:"Switzerland"}, b:{lbl:"3rd J",f:"🇩🇿",n:"Algeria"}, v:"BC Place, Vancouver", d:"Jul 2"},
@@ -263,9 +263,9 @@ const DATA = {
       {m:89,a:{lbl:"Winner M74",f:"🇵🇾",n:"Paraguay"},b:{lbl:"Winner M77",f:"🇫🇷",n:"France"}, v:"Lincoln Financial Field, Philadelphia", d:"Jul 4"},
       {m:90,a:{lbl:"Winner M73",f:"🇨🇦",n:"Canada"},b:{lbl:"Winner M75",f:"🇲🇦",n:"Morocco"}, v:"NRG Stadium, Houston", d:"Jul 4"},
       {m:93,a:{lbl:"Winner M83"},b:{lbl:"Winner M84"}, v:"AT&T Stadium, Arlington", d:"Jul 6"},
-      {m:94,a:{lbl:"Winner M81"},b:{lbl:"Winner M82"}, v:"Lumen Field, Seattle", d:"Jul 6"},
+      {m:94,a:{lbl:"Winner M81",f:"🇺🇸",n:"USA"},b:{lbl:"Winner M82",f:"🇧🇪",n:"Belgium"}, v:"Lumen Field, Seattle", d:"Jul 6"},
       {m:91,a:{lbl:"Winner M76",f:"🇧🇷",n:"Brazil"},b:{lbl:"Winner M78",f:"🇳🇴",n:"Norway"}, v:"MetLife Stadium, East Rutherford", d:"Jul 5"},
-      {m:92,a:{lbl:"Winner M79",f:"🇲🇽",n:"Mexico"},b:{lbl:"Winner M80"}, v:"Estadio Azteca, Mexico City", d:"Jul 5"},
+      {m:92,a:{lbl:"Winner M79",f:"🇲🇽",n:"Mexico"},b:{lbl:"Winner M80",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"}, v:"Estadio Azteca, Mexico City", d:"Jul 5"},
       {m:95,a:{lbl:"Winner M86"},b:{lbl:"Winner M88"}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 7"},
       {m:96,a:{lbl:"Winner M85"},b:{lbl:"Winner M87"}, v:"BC Place, Vancouver", d:"Jul 7"}
     ],
@@ -283,9 +283,9 @@ const DATA = {
   },
 
   news:[
-    "Round of 32 continues today (1 July) — England–DR Congo, Belgium–Senegal and USA–Bosnia are being played; no results are final yet.",
-    "Through from 30 June: Mexico, France and Norway advanced to the Round of 16.",
-    "USA kick off vs Bosnia & Herzegovina tonight at Levi's Stadium; England were level 1–1 with DR Congo.",
+    "1 July: England beat DR Congo 2–1 (Kane 75', 86' after trailing), USA defeated Bosnia 2–0 (Balogun, Tillman), Belgium edged Senegal 3–2 AET in a stunning comeback from 0–2 down with 4 minutes left.",
+    "Belgium's Tielemans was the hero — scoring at 89' then converting a penalty at 120'+5 to complete the comeback; possibly the latest winning goal in World Cup history.",
+    "Round of 16 matchups confirmed: Mexico vs England (Jul 5, Azteca), USA vs Belgium (Jul 6, Seattle).",
     "Round of 32 wraps up 2–3 July: Spain, Portugal, Switzerland, Argentina, Colombia & Australia still to play."
   ]
 };

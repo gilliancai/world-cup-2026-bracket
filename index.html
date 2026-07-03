@@ -185,7 +185,7 @@
    status: "q" = qualified/advanced, "out" = eliminated, "" = in contention
    ============================================================ */
 const DATA = {
-  updated: "1 July 2026",
+  updated: "3 July 2026",
   groups: {
     A:[ {f:"🇲🇽",n:"Mexico",pld:3,gd:"+6",pts:9,status:"q"},
         {f:"🇿🇦",n:"South Africa",pld:3,gd:"-1",pts:4,status:"q"},
@@ -246,8 +246,8 @@ const DATA = {
       {m:77, a:{lbl:"Winner I",f:"🇫🇷",n:"France",sc:3,win:true},     b:{lbl:"3rd F",f:"🇸🇪",n:"Sweden",sc:0,lose:true}, v:"MetLife Stadium, East Rutherford", d:"Jun 30"},
       {m:73, a:{lbl:"Runner-up A",f:"🇿🇦",n:"South Africa",sc:0,lose:true}, b:{lbl:"Runner-up B",f:"🇨🇦",n:"Canada",sc:1,win:true}, v:"SoFi Stadium, Inglewood", d:"Jun 28"},
       {m:75, a:{lbl:"Winner F",f:"🇳🇱",n:"Netherlands",sc:1,lose:true}, b:{lbl:"Runner-up C",f:"🇲🇦",n:"Morocco",sc:"1 (p)",win:true}, v:"Estadio BBVA, Guadalupe", d:"Jun 29"},
-      {m:83, a:{lbl:"Runner-up K",f:"🇵🇹",n:"Portugal"}, b:{lbl:"Runner-up L",f:"🇭🇷",n:"Croatia"}, v:"BMO Field, Toronto", d:"Jul 2"},
-      {m:84, a:{lbl:"Winner H",f:"🇪🇸",n:"Spain"},      b:{lbl:"Runner-up J",f:"🇦🇹",n:"Austria"}, v:"SoFi Stadium, Inglewood", d:"Jul 2"},
+      {m:83, a:{lbl:"Runner-up K",f:"🇵🇹",n:"Portugal",sc:2,win:true}, b:{lbl:"Runner-up L",f:"🇭🇷",n:"Croatia",sc:1,lose:true}, v:"BMO Field, Toronto", d:"Jul 2"},
+      {m:84, a:{lbl:"Winner H",f:"🇪🇸",n:"Spain",sc:3,win:true},      b:{lbl:"Runner-up J",f:"🇦🇹",n:"Austria",sc:0,lose:true}, v:"SoFi Stadium, Inglewood", d:"Jul 2"},
       {m:81, a:{lbl:"Winner D",f:"🇺🇸",n:"USA",sc:2,win:true},       b:{lbl:"3rd B",f:"🇧🇦",n:"Bosnia & Herz.",sc:0,lose:true}, v:"Levi's Stadium, Santa Clara", d:"Jul 1"},
       {m:82, a:{lbl:"Winner G",f:"🇧🇪",n:"Belgium",sc:3,win:true},   b:{lbl:"3rd I",f:"🇸🇳",n:"Senegal",sc:2,lose:true}, v:"Lumen Field, Seattle", d:"Jul 1"},
       {m:76, a:{lbl:"Winner C",f:"🇧🇷",n:"Brazil",sc:2,win:true},     b:{lbl:"Runner-up F",f:"🇯🇵",n:"Japan",sc:1,lose:true}, v:"NRG Stadium, Houston", d:"Jun 29"},
@@ -256,18 +256,18 @@ const DATA = {
       {m:80, a:{lbl:"Winner L",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England",sc:2,win:true}, b:{lbl:"3rd K",f:"🇨🇩",n:"DR Congo",sc:1,lose:true}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 1"},
       {m:86, a:{lbl:"Winner J",f:"🇦🇷",n:"Argentina"}, b:{lbl:"Runner-up H",f:"🇨🇻",n:"Cape Verde"}, v:"Hard Rock Stadium, Miami Gardens", d:"Jul 3"},
       {m:88, a:{lbl:"Runner-up D",f:"🇦🇺",n:"Australia"}, b:{lbl:"Runner-up G",f:"🇪🇬",n:"Egypt"}, v:"AT&T Stadium, Arlington", d:"Jul 3"},
-      {m:85, a:{lbl:"Winner B",f:"🇨🇭",n:"Switzerland"}, b:{lbl:"3rd J",f:"🇩🇿",n:"Algeria"}, v:"BC Place, Vancouver", d:"Jul 2"},
+      {m:85, a:{lbl:"Winner B",f:"🇨🇭",n:"Switzerland",sc:2,win:true}, b:{lbl:"3rd J",f:"🇩🇿",n:"Algeria",sc:0,lose:true}, v:"BC Place, Vancouver", d:"Jul 2"},
       {m:87, a:{lbl:"Winner K",f:"🇨🇴",n:"Colombia"},  b:{lbl:"3rd L",f:"🇬🇭",n:"Ghana"}, v:"Arrowhead Stadium, Kansas City", d:"Jul 3"}
     ],
     r16:[
       {m:89,a:{lbl:"Winner M74",f:"🇵🇾",n:"Paraguay"},b:{lbl:"Winner M77",f:"🇫🇷",n:"France"}, v:"Lincoln Financial Field, Philadelphia", d:"Jul 4"},
       {m:90,a:{lbl:"Winner M73",f:"🇨🇦",n:"Canada"},b:{lbl:"Winner M75",f:"🇲🇦",n:"Morocco"}, v:"NRG Stadium, Houston", d:"Jul 4"},
-      {m:93,a:{lbl:"Winner M83"},b:{lbl:"Winner M84"}, v:"AT&T Stadium, Arlington", d:"Jul 6"},
+      {m:93,a:{lbl:"Winner M83",f:"🇵🇹",n:"Portugal"},b:{lbl:"Winner M84",f:"🇪🇸",n:"Spain"}, v:"AT&T Stadium, Arlington", d:"Jul 6"},
       {m:94,a:{lbl:"Winner M81",f:"🇺🇸",n:"USA"},b:{lbl:"Winner M82",f:"🇧🇪",n:"Belgium"}, v:"Lumen Field, Seattle", d:"Jul 6"},
       {m:91,a:{lbl:"Winner M76",f:"🇧🇷",n:"Brazil"},b:{lbl:"Winner M78",f:"🇳🇴",n:"Norway"}, v:"MetLife Stadium, East Rutherford", d:"Jul 5"},
       {m:92,a:{lbl:"Winner M79",f:"🇲🇽",n:"Mexico"},b:{lbl:"Winner M80",f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"}, v:"Estadio Azteca, Mexico City", d:"Jul 5"},
       {m:95,a:{lbl:"Winner M86"},b:{lbl:"Winner M88"}, v:"Mercedes-Benz Stadium, Atlanta", d:"Jul 7"},
-      {m:96,a:{lbl:"Winner M85"},b:{lbl:"Winner M87"}, v:"BC Place, Vancouver", d:"Jul 7"}
+      {m:96,a:{lbl:"Winner M85",f:"🇨🇭",n:"Switzerland"},b:{lbl:"Winner M87"}, v:"BC Place, Vancouver", d:"Jul 7"}
     ],
     qf:[
       {m:97,a:{lbl:"Winner M89"},b:{lbl:"Winner M90"}, v:"Gillette Stadium, Foxborough", d:"Jul 9"},
@@ -283,10 +283,10 @@ const DATA = {
   },
 
   news:[
-    "1 July: England beat DR Congo 2–1 (Kane 75', 86' after trailing), USA defeated Bosnia 2–0 (Balogun, Tillman), Belgium edged Senegal 3–2 AET in a stunning comeback from 0–2 down with 4 minutes left.",
-    "Belgium's Tielemans was the hero — scoring at 89' then converting a penalty at 120'+5 to complete the comeback; possibly the latest winning goal in World Cup history.",
-    "Round of 16 matchups confirmed: Mexico vs England (Jul 5, Azteca), USA vs Belgium (Jul 6, Seattle).",
-    "Round of 32 wraps up 2–3 July: Spain, Portugal, Switzerland, Argentina, Colombia & Australia still to play."
+    "2 July: Portugal beat Croatia 2–1 (Ronaldo 68' pen, Ramos 94') to reach the R16; Spain demolished Austria 3–0 (Oyarzabal 36', 89'; Porro 66'); Switzerland beat Algeria 2–0 (Embolo 10', Ndoye 46').",
+    "1 July: England beat DR Congo 2–1, USA defeated Bosnia 2–0, Belgium edged Senegal 3–2 AET in a stunning comeback from 0–2 down with 4 minutes left.",
+    "R16 matchup set: Portugal vs Spain (Jul 6, AT&T Stadium); Switzerland's opponent determined after Jul 3 Colombia vs Ghana result.",
+    "3 July: Argentina vs Cape Verde, Australia vs Egypt, Colombia vs Ghana still to play — winners to complete the R16 draw."
   ]
 };
 
